@@ -3,19 +3,25 @@
   "homepage": "http://jamestw.logdown.com",
   "commands" : [
     {
-      "script" : "script.cocoascript",
-      "handler" : "onRun",
-      "shortcut" : "",
-      "name" : "Export base64/png",
-      "identifier" : "base64"
-    }
+          "script": "data-url.cocoascript",
+          "handler": "onRun",
+          "shortcut": "",
+          "name": "For CSS : url('data:image...",
+          "identifier": "base64-url"
+          }, {
+          	"script": "img-src.cocoascript",
+          	"handler": "onRun",
+          	"shortcut": "",
+          	"name": "For HTML : <img src='data:image...",
+          	"identifier": "base64-img"
+          }
   ],
   "menu" : {
-      "isRoot" : true,
     "items" : [
-      "base64"
+      "base64-url",
+      "base64-img"
     ],
-    "title" : "base64"
+    "title" : "Export base64 png"
   },
   "identifier" : "com.example.sketch.e13b26b9-79fe-4be0-8d5b-816323eaf8ff",
   "version" : "0.1",

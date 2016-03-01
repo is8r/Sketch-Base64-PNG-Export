@@ -1,7 +1,3 @@
-/*
-    下一個進階版
-    做一個介面產生 css 或 image 形式的 base64 ， 貼到剪貼簿中
-*/
 
 /* jshint ignore:start */
 
@@ -58,7 +54,7 @@ var onRun = function(context) {
         var base64 = [data base64EncodedStringWithOptions:0];
 
         clearFile(url);
-        returnCSS(base64);
+        returnImg(base64);
 
     }
 
