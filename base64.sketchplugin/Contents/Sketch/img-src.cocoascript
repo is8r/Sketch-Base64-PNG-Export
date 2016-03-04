@@ -23,7 +23,8 @@ var onRun = function(context) {
 
     function exportFile(layer){
 
-        var rect = [GKRect rectWithRect:[layer absoluteInfluenceRect]];
+		var rect = [MSSliceTrimming trimmedRectForSlice:layer];
+		var slice = [MSExportRequest requestWithRect:rect scale:1];
 
         var fileDisplayName = [doc displayName];
         var currentFilePath = [[doc fileURL] path];
@@ -40,11 +41,11 @@ var onRun = function(context) {
           });
 
           sandboxAccess.accessFilePath_withBlock_persistPermission(fullPath, function(){
-            [doc saveArtboardOrSlice:rect toFile:fullPath];
+            [doc saveArtboardOrSlice:slice toFile:fullPath];
           }, true);
 
         } else {
-          [doc saveArtboardOrSlice:rect toFile:fullPath];
+          [doc saveArtboardOrSlice:slice toFile:fullPath];
         }
 
         //log("fullPath:"+fullPath);
