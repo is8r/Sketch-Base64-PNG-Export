@@ -24,8 +24,8 @@
     "title" : "Export base64 png"
   },
   "identifier" : "com.example.sketch.e13b26b9-79fe-4be0-8d5b-816323eaf8ff",
-  "version" : "0.1",
-  "description" : "export base64/png",
+  "version" : "0.1.1",
+  "description" : "export base64/png for sketch 3.6",
   "authorEmail" : "jawa.yang@gmail.com",
   "name" : "base64"
 }
