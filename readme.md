@@ -9,4 +9,4 @@ A plugin for Sketch to export layers for css or html.
 
 * [Download the ZIP file](https://github.com/jawayang/Sketch-Base64-PNG-Export).
 * Copy the contents to the plugin folder 
-* Plugin Folder Path `~/Library/Application\ Support/com.bohemiancoding.sketch3/Plugins` 
+* Plugin Folder Path $`~/Library/Application\ Support/com.bohemiancoding.sketch3/Plugins` 
