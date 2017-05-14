@@ -23,7 +23,7 @@ var onRun = function(context) {
 
     function exportFile(layer){
 
-        var rect = MSSliceTrimming.trimmedRectForLayerAncestry(MSImmutableLayerAncestry.ancestryWithMSLayer(layer));
+        var rect = [[MSSliceTrimming trimmedRectForLayerAncestry:[MSImmutableLayerAncestry ancestryWithMSLayer:layer]]];
         var slice = [[MSExportRequest exportRequestsFromExportableLayer:layer] firstObject];
 
         var fileDisplayName = [doc displayName];
