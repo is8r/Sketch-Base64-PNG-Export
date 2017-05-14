@@ -27,7 +27,7 @@ var onRun = function(context) {
         var slice = [[MSExportRequest exportRequestsFromExportableLayer:layer] firstObject];
 
         var fileDisplayName = [doc displayName];
-        var currentFilePath = [[doc fileURL] path];
+        // var currentFilePath = [[doc fileURL] path];
         var fileFolder = NSTemporaryDirectory();
         var fileName = "JamesBase64";
         var fullPath = fileFolder + fileName + ".png";
