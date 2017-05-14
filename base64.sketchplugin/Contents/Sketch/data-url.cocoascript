@@ -22,10 +22,8 @@ var onRun = function(context) {
     }
 
     function exportFile(layer){
-		
-		var rect = [MSSliceTrimming trimmedRectForSlice:layer];
-		var slice = [MSExportRequest requestWithRect:rect scale:1];
-
+		var rect = MSSliceTrimming.trimmedRectForLayerAncestry(MSImmutableLayerAncestry.ancestryWithMSLayer(layer));
+		var slice = [[MSExportRequest exportRequestsFromExportableLayer:layer] firstObject];
         var fileDisplayName = [doc displayName];
         var currentFilePath = [[doc fileURL] path];
         var fileFolder = NSTemporaryDirectory();
