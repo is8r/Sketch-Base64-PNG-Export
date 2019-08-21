@@ -1,31 +1,40 @@
 {
-  "author" : "James Yang",
+  "author": "James Yang",
   "homepage": "http://jamestw.logdown.com",
-  "commands" : [
+  "commands": [
     {
-          "script": "data-url.cocoascript",
-          "handler": "onRun",
-          "shortcut": "",
-          "name": "For CSS : url('data:image...",
-          "identifier": "base64-url"
-          }, {
-          	"script": "img-src.cocoascript",
-          	"handler": "onRun",
-          	"shortcut": "",
-          	"name": "For HTML : <img src='data:image...",
-          	"identifier": "base64-img"
-          }
+      "script": "data-url.cocoascript",
+      "handler": "onRun",
+      "shortcut": "",
+      "name": "For CSS : url('data:image...",
+      "identifier": "base64-url"
+    },
+    {
+      "script": "img-src.cocoascript",
+      "handler": "onRun",
+      "shortcut": "",
+      "name": "For HTML : <img src='data:image...",
+      "identifier": "base64-img"
+    },
+    {
+      "script": "sass.cocoascript",
+      "handler": "onRun",
+      "shortcut": "",
+      "name": "For Sass Object : ",
+      "identifier": "base64-sass"
+    }
   ],
-  "menu" : {
-    "items" : [
+  "menu": {
+    "items": [
+      "base64-sass",
       "base64-url",
       "base64-img"
     ],
-    "title" : "Export base64 png"
+    "title": "Export base64 png"
   },
-  "identifier" : "com.example.sketch.e13b26b9-79fe-4be0-8d5b-816323eaf8ff",
-  "version" : "0.1.2",
-  "description" : "export base64/png for sketch 43",
-  "authorEmail" : "jawa.yang@gmail.com",
-  "name" : "base64"
+  "identifier": "com.example.sketch.e13b26b9-79fe-4be0-8d5b-816323eaf8ff",
+  "version": "0.1.2",
+  "description": "export base64/png for sketch 43",
+  "authorEmail": "jawa.yang@gmail.com",
+  "name": "base64"
 }
