@@ -1,0 +1,83 @@
+
+/* jshint ignore:start */
+
+var onRun = function(context) {
+
+	var doc = context.document;
+	var selectedLayers = context.selection;
+	var selectedCount = selectedLayers.count();
+	var firstLayer = selectedLayers.firstObject();
+  var scriptPath = context.scriptPath;
+  var directory = [scriptPath stringByDeletingLastPathComponent] + "/";
+
+	if (selectedCount == 0) {
+		doc.displayMessage('No layer selected');
+	} else {
+    var data = exportFile(firstLayer);
+	}
+
+    function in_sandbox(){
+      var environ = [[NSProcessInfo processInfo] environment];
+      return (nil != [environ objectForKey:@"APP_SANDBOX_CONTAINER_ID"]);
+    }
+
+    function exportFile(layer){
+		var rect = [[MSSliceTrimming trimmedRectForLayerAncestry:[MSImmutableLayerAncestry ancestryWithMSLayer:layer]]];
+    var slice = MSExportRequest.exportRequestsFromExportableLayer(layer).firstObject();
+    slice.scale = 2;
+        var fileDisplayName = [doc displayName];
+        // var currentFilePath = [[doc fileURL] path];
+        var fileFolder = NSTemporaryDirectory();
+        var fileName = "JamesBase64";
+        var fullPath = fileFolder + fileName + ".png";
+
+        if(in_sandbox()) {
+
+          var sandboxAccess = AppSandboxFileAccess.init({
+            message: "Please authorize Sketch to write to this folder. You will only need to do this once per folder.",
+            prompt:  "Authorize",
+            title: "Sketch Authorization"
+          });
+
+          sandboxAccess.accessFilePath_withBlock_persistPermission(fullPath, function(){
+            [doc saveArtboardOrSlice:slice toFile:fullPath];
+          }, true);
+
+        } else {
+          [doc saveArtboardOrSlice:slice toFile:fullPath];
+        }
+
+        //log("fullPath:"+fullPath);
+
+        var url = [NSURL fileURLWithPath:fullPath];
+        var data = [[NSData alloc]initWithContentsOfURL: url];
+        var base64 = [data base64EncodedStringWithOptions:0];
+
+        clearFile(url);
+        returnSCSS(base64, layer);
+
+    }
+
+    function returnSCSS(base64, layer){
+        showMessage("base64 data url already copied to clipboard, click cmd⌘ + v to paste it.");
+        var output = "$map-svg-" +layer.name()+ ": (width: " +layer.frame().width()+ "px, height: " +layer.frame().height()+ "px, base64: '" +base64+ "');";
+        return copy_text(output);
+    }
+
+    function showMessage(text){
+        [doc showMessage:text];
+    }
+
+    function clearFile(url){
+        [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
+    }
+
+    function copy_text(txt){
+      var pasteBoard = [NSPasteboard generalPasteboard]
+      [pasteBoard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:nil]
+      [pasteBoard setString:txt forType:NSPasteboardTypeString]
+    }
+
+};
+
+/* jshint ignore:end */
